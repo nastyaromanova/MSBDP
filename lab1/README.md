@@ -1,4 +1,4 @@
-# Инструкция по установке:
+# Инструкция по установке
 
 _Все действия делаем с sudo. Блоки, которые необходимо выполнить на всех трех нодах помечены через *._
  
@@ -69,7 +69,7 @@ source /usr/local/hadoop/etc/hadoop/hadoop-env.sh
  
 9. Создаем ssh ключи (*)
 ```
-su - hadoop // password hadoop
+su - hadoop // password XXX
 ssh-keygen
 ```
 Теперь получившиеся ключи пробрасываем между тачек, чтобы без проблем заходить с одной на другую без пароля
@@ -92,7 +92,6 @@ chown -R hadoop:hadoop /hadoop/hdfs
 </configuration>
 ```
  
- 
 12. Меняем /usr/local/hadoop/etc/hadoop/hdfs-site.xml (*)
 
 В файле `/usr/local/hadoop/etc/hadoop/hdfs-site.xml` меняем содержимое на следующее:
@@ -109,7 +108,7 @@ chown -R hadoop:hadoop /hadoop/hdfs
 </configuration>
 ```
  
-13. Теперь меняем только мастера
+13. Меняем только мастера
 
 В файле `/usr/local/hadoop/etc/hadoop/mapred-site.xml` меняем содержимое на следующее:
 ```
@@ -160,8 +159,8 @@ haddop3
 ```
 su - hadoop
 cd /usr/local/hadoop
-sudo ./bin/hdfs namenode -format
-sudo ./sbin/start-dfs.sh
+./bin/hdfs namenode -format
+./sbin/start-dfs.sh
 ./sbin/start-yarn.sh
 ```
  
