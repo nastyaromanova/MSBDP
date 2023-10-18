@@ -1,3 +1,33 @@
+# Изменение использованного пространства на локальной ФС (фактор репликации 3)
+```
+hadoop@mts-hse-de-course-team-9-1:~$ hdfs dfs -put testfile /test/testfile
+```
+
+1. haddop1
+```
+hadoop@mts-hse-de-course-team-9-1:~$ du -shkb /hadoop/hdfs/datanode/
+4096	/hadoop/hdfs/datanode/
+hadoop@mts-hse-de-course-team-9-1:~$ du -shkb /hadoop/hdfs/namenode/
+2107348	/hadoop/hdfs/namenode/
+```
+
+2. haddop2
+```
+team9@mts-hse-de-course-team-9-2:~$ sudo du -shkb /hadoop/hdfs/datanode/
+132536	/hadoop/hdfs/datanode/
+team9@mts-hse-de-course-team-9-2:~$ sudo du -shkb /hadoop/hdfs/namenode
+4096	/hadoop/hdfs/namenode
+team9@mts-hse-de-course-team-9-2:~$ 
+```
+
+3. haddop3
+```
+team9@mts-hse-de-course-team-9-3:~$ sudo du -shkb /hadoop/hdfs/datanode
+132517	/hadoop/hdfs/datanode
+team9@mts-hse-de-course-team-9-3:~$ sudo du -shkb /hadoop/hdfs/namenode/
+4096	/hadoop/hdfs/namenode/
+```
+
 # Инструкция по установке
 
 _Все действия делаем с sudo. Блоки, которые необходимо выполнить на всех трех нодах помечены через *._
