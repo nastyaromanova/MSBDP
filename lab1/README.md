@@ -16,14 +16,13 @@ hadoop@mts-hse-de-course-team-9-1:~$ du -shkb /hadoop/hdfs/namenode/
 team9@mts-hse-de-course-team-9-2:~$ sudo du -shkb /hadoop/hdfs/datanode/
 132536	/hadoop/hdfs/datanode/
 team9@mts-hse-de-course-team-9-2:~$ sudo du -shkb /hadoop/hdfs/namenode
-4096	/hadoop/hdfs/namenode
-team9@mts-hse-de-course-team-9-2:~$ 
+4096	/hadoop/hdfs/namenode/
 ```
 
 3. haddop3
 ```
 team9@mts-hse-de-course-team-9-3:~$ sudo du -shkb /hadoop/hdfs/datanode
-132517	/hadoop/hdfs/datanode
+132517	/hadoop/hdfs/datanode/
 team9@mts-hse-de-course-team-9-3:~$ sudo du -shkb /hadoop/hdfs/namenode/
 4096	/hadoop/hdfs/namenode/
 ```
