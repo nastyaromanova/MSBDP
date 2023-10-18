@@ -1,7 +1,7 @@
 # Разместить на HDFS файл размером ~1Gb
 
 ## Какие ресурсы (CPU, RAM, DISK) потребовала эта операция (на NN, на DN)?
-![resources](lab2/resources.png)
+![resources](lab2/resources1.png)
 
 ## Как изменился файл образа ФС?
 ```
