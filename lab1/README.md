@@ -62,7 +62,7 @@ tar -zxf hadoop-*.tar.gz -C /usr/local/hadoop --strip-components 1
 5. Создаем пользователя hadoop (*)
 ```
 useradd hadoop -m
-passwd XXX // пишем пароль XXX (не hadoop!)
+passwd hadoop // дальше пишем пароль XXX (не hadoop!)
 chown -R hadoop:hadoop /usr/local/hadoop
 ```
  
@@ -93,6 +93,7 @@ export YARN_NODEMANAGER_USER="hadoop"
 8. Применяем эти настройки на пользователе (*)
 ```
 su - hadoop
+chsh -s /bin/bash // поставим баш по дефолту
 source /usr/local/hadoop/etc/hadoop/hadoop-env.sh
 ```
  
@@ -103,7 +104,7 @@ ssh-keygen
 ```
 Теперь получившиеся ключи пробрасываем между тачек, чтобы без проблем заходить с одной на другую без пароля
  
-10. Создаем папку с данными (*)
+10. Создаем папку с данными уже вне пользователя haddop (*)
 ```
 mkdir -p /hadoop/hdfs/{datanode,namenode}
 chown -R hadoop:hadoop /hadoop/hdfs
