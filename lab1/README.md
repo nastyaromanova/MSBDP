@@ -97,10 +97,11 @@ chsh -s /bin/bash // поставим баш по дефолту
 source /usr/local/hadoop/etc/hadoop/hadoop-env.sh
 ```
  
-9. Создаем ssh ключи (*)
+9. Создаем ssh ключи и пробрасываем их на локальную тачку (*)
 ```
 su - hadoop // password XXX
 ssh-keygen
+ssh-copy-id localhost
 ```
 Теперь получившиеся ключи пробрасываем между тачек, чтобы без проблем заходить с одной на другую без пароля
  
@@ -184,8 +185,20 @@ localhost
 haddop2
 haddop3
 ```
+
+14. Меняем права всех папочек .ssh во всех пользователях (то есть получается надо продублировать код 6 раз):
+```
+chmod 750 $HOME
+chmod -R 700 $HOME/.ssh
+chmod 600 ~/.ssh/id_rsa
+chmod 644 ~/.ssh/config
+chmod 644 ~/.ssh/authorized_keys
+chmod 644 ~/.ssh/known_hosts
+chmod 700 ~/.ssh
+```
+
  
-13. Запускаем кластер
+15. Запускаем кластер
 ```
 su - hadoop
 cd /usr/local/hadoop
