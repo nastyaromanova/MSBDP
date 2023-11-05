@@ -10,7 +10,7 @@ for line in sys.stdin:
     try:
         country_city, count = line.split('\t')
         count = int(count)
-        transaction_map[country_city] = transaction_map.get(reddit, 0) + count
+        transaction_map[country_city] = transaction_map.get(country_city, 0) + count
     except ValueError:
         pass
 
