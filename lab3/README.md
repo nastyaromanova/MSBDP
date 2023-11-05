@@ -34,15 +34,14 @@ hdfs dfs -put *.csv mapreduce_base_input
 hdfs dfs -ls mapreduce_base_input
 ```
 
-Запускаем команду, которая выполнит MapReduce, используя csv-файл (по файту он возьмет все файлы, но мы положили туда только один – наш датасет), расположенный в HDFS /user/hduser/mapreduce_base_input, mapper.py и reducer.py. Результат будет записан в HDFS /user/hduser/mapreduce_base_output:
+Запускаем команду, которая выполнит MapReduce, используя csv-файл (по файту он возьмет все файлы, но мы положили туда только один – наш датасет), расположенный в HDFS /user/hadoop/mapreduce_base_input, mapper.py и reducer.py. Результат будет записан в HDFS /user/hadoop/mapreduce_base_output:
 ```bash
-hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar -mapper mapper.py -reducer reducer.py -input /user/hadoop/m
-apreduce_base_input/*.csv -output /user/hadoop/mapreduce_base_output
+hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar -mapper mapper.py -reducer reducer.py -input /user/hadoop/mapreduce_base_input/*.csv -output /user/hadoop/mapreduce_base_output
 ```
 
 Запускаем команду выше, но уже на кластере:
 ```bash
-hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar -files mapper.py,reducer.py -mapper mapper.py -combiner reducer.py -reducer reducer.py -input /user/hduser/mapreduce_base_input/*.csv -output /user/hduser/mapreduce_base_output
+hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar -files mapper.py,reducer.py -mapper mapper.py -combiner reducer.py -reducer reducer.py -input /user/hadoop/mapreduce_base_input/*.csv -output /user/hadoop/mapreduce_base_output
 ```
 
 Чтобы посмотреть на результаты выполним команды:
