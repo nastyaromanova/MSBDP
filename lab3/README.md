@@ -19,13 +19,13 @@ su - hadoop // заходим на hadoop
 hadoop dfsadmin -safemode leave // отключаем safemode
 hdfs dfs -mkdir /user
 hdfs dfs -mkdir /user/team9
-hdfs dfs -mkdir mapreduce_base_input
-hdfs dfs -put *.csv mapreduce_base_input
+hdfs dfs -mkdir /user/team9/mapreduce_base_input
+hdfs dfs -put *.csv /user/team9/mapreduce_base_input
 ```
 
 Мы можем проверить файлы, загруженные в распределенную файловую систему, с помощью команды:
 ```bash
-hdfs dfs -ls mapreduce_base_input
+hdfs dfs -ls /user/team9/mapreduce_base_input
 ```
 
 Настраиваем файл `/usr/local/hadoop/etc/hadoop/mapred-site.xml`:
