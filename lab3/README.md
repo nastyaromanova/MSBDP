@@ -72,7 +72,7 @@ cat dataset.csv | python3 mapper.py | python3 reducer.py
 mapred streaming -files ./mapper.py,./reducer.py -mapper mapper.py -reducer mapper.py -input /user/hadoop/mapreduce_base_input/*.csv -output /user/hadoop/mapreduce_base_output
 ```
 
-Запускаем команду, которая выполнит MapReduce на кластере. Результат будет записан в HDFS /user/team9/mapreduce_base_output:
+Запускаем команду, которая выполнит MapReduce на кластере. Результат будет записан в HDFS /user/hadoop/mapreduce_base_output:
 ```bash
 hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar -mapper mapper.py -reducer reducer.py -input /user/hadoop/mapreduce_base_input/*.csv -output /user/hadoop/mapreduce_base_output
 ```
