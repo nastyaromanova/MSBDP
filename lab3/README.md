@@ -16,16 +16,18 @@ MapReduce приложение написано на python. Сам код мо�
 Внутри нашей среды Hadoop нам нужно перейти к каталогам. Далее нужно внутри HDFS создать каталог `mapreduce_base_input` и скопировать туда наш датасет (файл CSV) из локальной файловой системы, используя следующие команды:
 ```bash
 su - hadoop // заходим на hadoop
-hadoop dfsadmin -safemode leave // отключаем safemode
+hdfs dfsadmin -safemode leave // отключаем safemode
 hdfs dfs -mkdir /user
-hdfs dfs -mkdir /user/team9
-hdfs dfs -mkdir /user/team9/mapreduce_base_input
-hdfs dfs -put *.csv /user/team9/mapreduce_base_input
+hdfs dfs -mkdir /user/hadoop
+hdfs dfs -mkdir /user/hadoop/mapreduce_base_input
+
+cd /usr/local/hadoop/mapreduce_lab3
+hdfs dfs -put *.csv /user/hadoop/mapreduce_base_input
 ```
 
 Мы можем проверить файлы, загруженные в распределенную файловую систему, с помощью команды:
 ```bash
-hdfs dfs -ls /user/team9/mapreduce_base_input
+hdfs dfs -ls /user/hadoop/mapreduce_base_input
 ```
 
 Настраиваем файл `/usr/local/hadoop/etc/hadoop/mapred-site.xml`:
@@ -67,18 +69,18 @@ cat dataset.csv | python3 mapper.py | python3 reducer.py
 
 Запускаем команду, которая выполнит MapReduce Standalone, используя csv-файл (по факту он возьмет все файлы, но мы положили туда только один – наш датасет), расположенный в HDFS /user/hadoop/mapreduce_base_input, mapper.py и reducer.py. Результат будет записан в output:
 ```bash
-mapred streaming -files ./mapper.py,./reducer.py -mapper mapper.py -reducer mapper.py -input /user/hadoop/mapreduce_base_input/*.csv -output output
+mapred streaming -files ./mapper.py,./reducer.py -mapper mapper.py -reducer mapper.py -input /user/hadoop/mapreduce_base_input/*.csv -output /user/hadoop/mapreduce_base_output
 ```
 
-Запускаем команду, которая выполнит MapReduce на кластере. Результат будет записан в HDFS /user/hadoop/mapreduce_base_output:
+Запускаем команду, которая выполнит MapReduce на кластере. Результат будет записан в HDFS /user/team9/mapreduce_base_output:
 ```bash
 hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar -mapper mapper.py -reducer reducer.py -input /user/hadoop/mapreduce_base_input/*.csv -output /user/hadoop/mapreduce_base_output
 ```
 
 Чтобы посмотреть на результаты выполним команды:
 ```bash
-hdfs dfs -ls mapreduce_base_output
-hdfs dfs -cat mapreduce_base_output/*
+hdfs dfs -ls /user/hadoop/mapreduce_base_output
+hdfs dfs -cat /user/hadoop/mapreduce_base_output/*
 ```
 
 # Замеры скорости работы приложения и задействованные ресурсы
