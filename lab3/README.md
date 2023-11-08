@@ -67,9 +67,9 @@ hdfs dfs -ls /user/hadoop/mapreduce_base_input
 cat dataset.csv | python3 mapper.py | python3 reducer.py
 ```
 
-Запускаем команду, которая выполнит MapReduce Standalone, используя csv-файл (по факту он возьмет все файлы, но мы положили туда только один – наш датасет), расположенный в HDFS /user/hadoop/mapreduce_base_input, mapper.py и reducer.py. Результат будет записан в output:
+Запускаем команду, которая выполнит MapReduce Standalone, используя csv-файл (по факту он возьмет все файлы, но мы положили туда только один – наш датасет), расположенный в HDFS /user/hadoop/mapreduce_base_input, mapper.py и reducer.py. Результат будет записан в HDFS /user/hadoop/mapreduce_base_output:
 ```bash
-mapred streaming -files ./mapper.py,./reducer.py -mapper mapper.py -reducer mapper.py -input /user/hadoop/mapreduce_base_input/*.csv -output /user/hadoop/mapreduce_base_output
+mapred streaming -files ./mapper.py,./reducer.py -mapper mapper.py -reducer reducer.py -input /user/hadoop/mapreduce_base_input/*.csv -output /user/hadoop/mapreduce_base_output
 ```
 
 Запускаем команду, которая выполнит MapReduce на кластере. Результат будет записан в HDFS /user/hadoop/mapreduce_base_output:
