@@ -136,8 +136,17 @@ Map-Reduce Framework
     Total committed heap usage (bytes)=1751121920
     Peak Map Physical memory (bytes)=347934720
     Peak Map Virtual memory (bytes)=2766499840
+Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
 File Input Format Counters 
     Bytes Read=1062363353
+File Output Format Counters 
+    Bytes Written=1561664
 ```
 
 ### С использованием кластер Hadoop
