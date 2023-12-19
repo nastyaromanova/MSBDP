@@ -93,49 +93,20 @@ hdfs dfs -cat /user/hadoop/mapreduce_base_output/*
 
 ### С использованием Hadoop Standalone
 ```
-File System Counters
-    FILE: Number of bytes read=0
-    FILE: Number of bytes written=169736321
-    FILE: Number of read operations=0
-    FILE: Number of large read operations=0
-    FILE: Number of write operations=0
-    HDFS: Number of bytes read=1062364281
-    HDFS: Number of bytes written=0
-    HDFS: Number of read operations=24
-    HDFS: Number of large read operations=0
-    HDFS: Number of write operations=0
-    HDFS: Number of bytes read erasure-coded=0
-Job Counters 
-    Failed reduce tasks=4
-    Killed map tasks=1
-    Launched map tasks=9
-    Launched reduce tasks=4
-    Data-local map tasks=9
-    Total time spent by all maps in occupied slots (ms)=270990
-    Total time spent by all reduces in occupied slots (ms)=85051
-    Total time spent by all map tasks (ms)=270990
-    Total time spent by all reduce tasks (ms)=85051
-    Total vcore-milliseconds taken by all map tasks=270990
-    Total vcore-milliseconds taken by all reduce tasks=85051
-    Total megabyte-milliseconds taken by all map tasks=277493760
-    Total megabyte-milliseconds taken by all reduce tasks=87092224
 Map-Reduce Framework
     Map input records=7069057
     Map output records=7069057
     Map output bytes=153155255
     Map output materialized bytes=167293417
-    Input split bytes=928
-    Combine input records=0
-    Spilled Records=7069057
-    Failed Shuffles=0
-    Merged Map outputs=0
-    GC time elapsed (ms)=1171
-    CPU time spent (ms)=55440
-    Physical memory (bytes) snapshot=2535014400
-    Virtual memory (bytes) snapshot=21915881472
-    Total committed heap usage (bytes)=1751121920
-    Peak Map Physical memory (bytes)=347934720
-    Peak Map Virtual memory (bytes)=2766499840
+    GC time elapsed (ms)=2930
+    CPU time spent (ms)=61640
+    Physical memory (bytes) snapshot=2625093632
+    Virtual memory (bytes) snapshot=24235805696
+    Total committed heap usage (bytes)=1743781888
+    Peak Map Physical memory (bytes)=354254848
+    Peak Map Virtual memory (bytes)=2767618048
+    Peak Reduce Physical memory (bytes)=238182400
+    Peak Reduce Virtual memory (bytes)=2759036928
 Shuffle Errors
 		BAD_ID=0
 		CONNECTION=0
@@ -151,56 +122,20 @@ File Output Format Counters
 
 ### С использованием кластер Hadoop
 ```
-File System Counters
-    FILE: Number of bytes read=6190268
-    FILE: Number of bytes written=14911575
-    FILE: Number of read operations=0
-    FILE: Number of large read operations=0
-    FILE: Number of write operations=0
-    HDFS: Number of bytes read=1062364281
-    HDFS: Number of bytes written=1561664
-    HDFS: Number of read operations=29
-    HDFS: Number of large read operations=0
-    HDFS: Number of write operations=2
-    HDFS: Number of bytes read erasure-coded=0
-Job Counters 
-    Killed map tasks=1
-    Launched map tasks=9
-    Launched reduce tasks=1
-    Data-local map tasks=9
-    Total time spent by all maps in occupied slots (ms)=289403
-    Total time spent by all reduces in occupied slots (ms)=28010
-    Total time spent by all map tasks (ms)=289403
-    Total time spent by all reduce tasks (ms)=28010
-    Total vcore-milliseconds taken by all map tasks=289403
-    Total vcore-milliseconds taken by all reduce tasks=28010
-    Total megabyte-milliseconds taken by all map tasks=296348672
-    Total megabyte-milliseconds taken by all reduce tasks=28682240
 Map-Reduce Framework
     Map input records=7069057
     Map output records=7069057
     Map output bytes=153155255
-    Map output materialized bytes=6190310
-    Input split bytes=928
-    Combine input records=7069057
-    Combine output records=226224
-    Reduce input groups=60818
-    Reduce shuffle bytes=6190310
-    Reduce input records=226224
-    Reduce output records=60818
-    Spilled Records=452448
-    Shuffled Maps =8
-    Failed Shuffles=0
-    Merged Map outputs=8
-    GC time elapsed (ms)=2930
-    CPU time spent (ms)=61640
-    Physical memory (bytes) snapshot=2625093632
-    Virtual memory (bytes) snapshot=24635805696
-    Total committed heap usage (bytes)=1743781888
-    Peak Map Physical memory (bytes)=354254848
-    Peak Map Virtual memory (bytes)=2767618048
-    Peak Reduce Physical memory (bytes)=238182400
-    Peak Reduce Virtual memory (bytes)=2759036928
+    Map output materialized bytes=167293417
+    GC time elapsed (ms)=1171
+    CPU time spent (ms)=57440
+    Physical memory (bytes) snapshot=2535014400
+    Virtual memory (bytes) snapshot=23915881472
+    Total committed heap usage (bytes)=1751121920
+    Peak Map Physical memory (bytes)=347934720
+    Peak Map Virtual memory (bytes)=2766499840
+    Peak Reduce Physical memory (bytes)=217814430
+    Peak Reduce Virtual memory (bytes)=2779327668
 Shuffle Errors
     BAD_ID=0
     CONNECTION=0
