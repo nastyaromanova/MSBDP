@@ -17,7 +17,7 @@ default_args = {
             'catchup': False
 }
 
-dag = DAG(dag_id='testing_stuff',
+dag = DAG(dag_id='testing_stuff_2',
           default_args=default_args,
           schedule='50 * * * *',
           dagrun_timeout=timedelta(seconds=6000))
@@ -61,11 +61,16 @@ t3_bash = f"""
 """
 
 t4_bash = f"{LINK_HDFS} dfs -cat /user/hadoop/mapreduce_base_output/*"
-t5_bash = f"{LINK_HDFS} dfs -rm -r /user/hadoop/mapreduce_base_input/* && 
-rm mapper.py && rm reducer.py"
-t6_bash = f"{LINK_HDFS} dfs -rm -r /user/hadoop/mapreduce_base_output"
 
-t7_bash = f'rm -f ~/manual_lock.lock'
+t5_bash = "source /home/airflow/venv/bin/activate && python3 spark.py"
+t6_bash = f"{LINK_HDFS} dfs -ls 
+/user/hadoop/mapreduce_base_output/dataset_formatted.json"
+
+t7_bash = f"{LINK_HDFS} dfs -rm -r /user/hadoop/mapreduce_base_input/* && 
+rm mapper.py && rm reducer.py"
+t8_bash = f"{LINK_HDFS} dfs -rm -r /user/hadoop/mapreduce_base_output"
+
+t9_bash = f'rm -f ~/manual_lock.lock'
 
 t0 = SSHOperator(ssh_conn_id='ssh_default',
                  task_id='lock_tasks',
@@ -97,20 +102,29 @@ t4 = SSHOperator(ssh_conn_id='ssh_default',
                  dag=dag)
 
 t5 = SSHOperator(ssh_conn_id='ssh_default',
-                 task_id='remove_data',
+                 task_id='execute_spark',
                  command=t5_bash,
                  dag=dag)
 
-
 t6 = SSHOperator(ssh_conn_id='ssh_default',
-                 task_id='remove_results',
+                 task_id='show_json_results',
                  command=t6_bash,
                  dag=dag)
 
 t7 = SSHOperator(ssh_conn_id='ssh_default',
-                 task_id='unlock_tasks',
+                 task_id='remove_data',
                  command=t7_bash,
                  dag=dag)
 
+t8 = SSHOperator(ssh_conn_id='ssh_default',
+                 task_id='remove_results',
+                 command=t8_bash,
+                 dag=dag)
 
-t0 >> t1 >> t2 >> t3 >> t4 >> t5 >> t6 >> t7
+t9 = SSHOperator(ssh_conn_id='ssh_default',
+                 task_id='unlock_tasks',
+                 command=t9_bash,
+                 dag=dag)
+
+
+t0 >> t1 >> t2 >> t3 >> t4 >> t5 >> t6 >> t7 >> t8 >> t9
